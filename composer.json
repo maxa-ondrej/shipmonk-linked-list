@@ -1,5 +1,7 @@
 {
   "name": "maxa-ondrej/shipmonk-linked-list",
+  "type": "library",
+  "version": "0.0.1",
   "authors": [
     {
       "name": "Ondřej Maxa",

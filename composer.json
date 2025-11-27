@@ -1,0 +1,26 @@
+{
+  "name": "maxa-ondrej/shipmonk-linked-list",
+  "authors": [
+    {
+      "name": "Ondřej Maxa",
+      "email": "ondrej.maxa11@gmail.com"
+    }
+  ],
+  "homepage": "https://github.com/maxa-ondrej/shipmonk-linked-list",
+  "scripts": {
+  },
+  "autoload": {
+    "psr-4": {
+      "MaxaOndrej\\ShipMonk\\LinkedList\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "MaxaOndrej\\ShipMonk\\LinkedList\\": "tests/"
+    }
+  },
+  "require": {
+  },
+  "require-dev": {
+  }
+}

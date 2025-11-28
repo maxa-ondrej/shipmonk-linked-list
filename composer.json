@@ -13,9 +13,11 @@
     "lint": "php-cs-fixer fix --dry-run",
     "format": "php-cs-fixer fix",
     "check": "phpstan analyse -c phpstan.neon",
+    "test": "phpunit tests",
     "qa": [
       "@lint",
-      "@check"
+      "@check",
+      "@test"
     ]
   },
   "autoload": {
@@ -33,7 +35,8 @@
   },
   "require-dev": {
     "phpstan/phpstan": "^2.1",
-    "friendsofphp/php-cs-fixer": "^3.90"
+    "friendsofphp/php-cs-fixer": "^3.90",
+    "phpunit/phpunit": "^12"
   },
   "config": {
     "platform": {

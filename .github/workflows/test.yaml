@@ -29,7 +29,7 @@ jobs:
       - name: Install Composer Dependencies
         uses: php-actions/composer@v6
       - name: Run PHPStan
-        run: composer run-script phpstan
+        run: composer run-script check
   test:
     runs-on: ubuntu-latest
     steps:
@@ -41,8 +41,5 @@ jobs:
           php-version: '8.4'
       - name: Install Composer Dependencies
         uses: php-actions/composer@v6
-      - name: Run PHPUnit Tests
-        uses: php-actions/phpunit@v4
-        with:
-          php_extensions: "xdebug"
-          coverage_clover: "coverage/clover.xml"
+      - name: Run PHPUnit tests
+        run: composer run-script test

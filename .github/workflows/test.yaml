@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  - push
+
+jobs:
+  php-cs-fixer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Composer Dependencies
+        uses: php-actions/composer@v6
+      - name: Run PHP-CS-Fixer
+        run: composer run-script lint
+  phpstan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Composer Dependencies
+        uses: php-actions/composer@v6
+      - name: Run PHPStan
+        run: composer run-script phpstan
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Composer Dependencies
+        uses: php-actions/composer@v6
+      - name: Run PHPUnit Tests
+        uses: php-actions/phpunit@v4
+        with:
+          php_extensions: "xdebug"
+          coverage_clover: "coverage/clover.xml"

@@ -7,6 +7,7 @@ namespace MaxaOndrej\ShipMonk\Collections;
 use ArrayAccess;
 use Countable;
 use IteratorAggregate;
+use Stringable;
 
 /**
  * Interface for a sorted linked list.
@@ -19,7 +20,7 @@ use IteratorAggregate;
  * @extends IteratorAggregate<int,T>
  * @extends ArrayAccess<int,T>
  */
-interface IList extends IteratorAggregate, ArrayAccess, Countable {
+interface IList extends IteratorAggregate, ArrayAccess, Countable, Stringable {
     /**
      * Returns an iterator for traversing the list in descending order (from largest to smallest).
      *

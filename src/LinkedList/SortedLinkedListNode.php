@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace MaxaOndrej\ShipMonk\Collections\LinkedList;
 
 use InvalidArgumentException;
+use Stringable;
 
 use function gettype;
 
@@ -16,7 +17,7 @@ use function gettype;
  *
  * @template T of int|string
  */
-class SortedLinkedListNode {
+class SortedLinkedListNode implements Stringable {
     /**
      * Reference to the next node in the list, or null if this is the tail.
      *

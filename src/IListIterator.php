@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace MaxaOndrej\ShipMonk\Collections;
 
 use Iterator;
+use Stringable;
 
 /**
  * Iterator for traversing a list.
@@ -15,4 +16,4 @@ use Iterator;
  *
  * @extends Iterator<int,T>
  */
-interface IListIterator extends Iterator {}
+interface IListIterator extends Iterator, Stringable {}

@@ -6,6 +6,7 @@ namespace MaxaOndrej\ShipMonk\Collections\LinkedList;
 
 use InvalidArgumentException;
 use MaxaOndrej\ShipMonk\Collections\IList;
+use Stringable;
 
 use function gettype;
 
@@ -27,7 +28,7 @@ use function gettype;
  *
  * @implements IList<T>
  */
-class SortedLinkedList implements IList {
+class SortedLinkedList implements Stringable, IList {
     /**
      * The first node in the list (smallest value).
      * Null if the list is empty.
@@ -57,6 +58,13 @@ class SortedLinkedList implements IList {
      * @param string $type 'integer' or 'string'
      */
     private function __construct(private readonly string $type) {}
+
+    /**
+     * Get a string representation of the list.
+     */
+    public function __toString(): string {
+        return "SortedLinkedList({$this->count}x {$this->type})";
+    }
 
     /**
      * Create a sorted linked list for integers.

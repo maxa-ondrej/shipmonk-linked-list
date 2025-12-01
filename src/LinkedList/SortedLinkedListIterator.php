@@ -6,6 +6,7 @@ namespace MaxaOndrej\ShipMonk\Collections\LinkedList;
 
 use Iterator;
 use MaxaOndrej\ShipMonk\Collections\IListIterator;
+use Stringable;
 
 use function count;
 
@@ -19,7 +20,7 @@ use function count;
  *
  * @implements IListIterator<T>
  */
-class SortedLinkedListIterator implements IListIterator {
+class SortedLinkedListIterator implements Stringable, IListIterator {
     /**
      * Current position in the elements array.
      */
@@ -33,6 +34,13 @@ class SortedLinkedListIterator implements IListIterator {
     public function __construct(
         private readonly array $elements,
     ) {}
+
+    /**
+     * Get the string representation of the iterator.
+     */
+    public function __toString(): string {
+        return "SortedLinkedListIterator(position={$this->position})";
+    }
 
     /**
      * Get the current element.

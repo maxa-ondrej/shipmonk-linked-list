@@ -173,8 +173,6 @@ class SortedLinkedList implements Stringable, IList {
     }
 
     /**
-     * Get the number of elements in the list.
-     *
      * @return int Number of elements
      */
     public function count(): int {
@@ -214,16 +212,12 @@ class SortedLinkedList implements Stringable, IList {
     }
 
     /**
-     * Remove the first occurrence of the given element.
-     *
      * @param T $element Value to remove
      *
      * @return bool True if removed, false if not found
      */
     public function remove($element): bool {
-        for ($node = $this->head; $node !== null && $node->value < $element;) {
-            $node = $node->next;
-        }
+        $node = $this->findNode($element);
         if ($node === null) {
             return false;
         }
@@ -233,16 +227,12 @@ class SortedLinkedList implements Stringable, IList {
     }
 
     /**
-     * Remove all occurrences of the given element.
-     *
      * @param T $element Value to remove
      *
      * @return bool True if any removed, false if not found
      */
     public function removeAll($element): bool {
-        for ($node = $this->head; $node !== null && $node->value < $element;) {
-            $node = $node->next;
-        }
+        $node = $this->findNode($element);
         $removed = false;
         for (; $node !== null && $node->value === $element;) {
             $old = $node;
@@ -252,6 +242,30 @@ class SortedLinkedList implements Stringable, IList {
         }
 
         return $removed;
+    }
+
+    /**
+     * Checks if the list contains the specified element.
+     *
+     * @param T $element The element to check
+     */
+    public function has($element): bool {
+        return $this->findNode($element) !== null;
+    }
+
+    /**
+     * Counts the occurrences of the specified element in the list.
+     *
+     * @param T $element The element to count
+     */
+    public function countElements($element): int {
+        $node = $this->findNode($element);
+        $count = 0;
+        for (; $node !== null && $node->value === $element; $node = $node->next) {
+            ++$count;
+        }
+
+        return $count;
     }
 
     /**
@@ -285,6 +299,24 @@ class SortedLinkedList implements Stringable, IList {
         }
 
         return $node;
+    }
+
+    /**
+     * Get the node for the given element.
+     *
+     * @param T $element
+     *
+     * @return null|SortedLinkedListNode<T> Node at index or null if out of bounds
+     */
+    private function findNode($element): ?SortedLinkedListNode {
+        for ($node = $this->head; $node !== null && $node->value < $element;) {
+            $node = $node->next;
+        }
+        if ($node?->value === $element) {
+            return $node;
+        }
+
+        return null;
     }
 
     /**

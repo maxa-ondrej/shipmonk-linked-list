@@ -29,6 +29,13 @@ interface IList extends IteratorAggregate, ArrayAccess, Countable, Stringable {
     public function getIteratorReversed(): IListIterator;
 
     /**
+     * Checks if the list contains the specified element.
+     *
+     * @param T $element The element to check
+     */
+    public function has($element): bool;
+
+    /**
      * Adds a single element to the list, maintaining sorted order.
      *
      * @param T $element The element to add
@@ -59,4 +66,11 @@ interface IList extends IteratorAggregate, ArrayAccess, Countable, Stringable {
      * @return bool True if any elements were removed, false otherwise
      */
     public function removeAll($element): bool;
+
+    /**
+     * Counts the occurrences of the specified element in the list.
+     *
+     * @param T $element The element to count
+     */
+    public function countElements($element): int;
 }

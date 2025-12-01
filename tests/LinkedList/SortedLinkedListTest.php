@@ -367,4 +367,47 @@ final class SortedLinkedListTest extends TestCase {
         $list = SortedLinkedList::int(0, -1, 1, 0);
         $this->assertSame([-1, 0, 0, 1], [...$list->getIterator()]);
     }
+
+    public function testHasElementInt(): void {
+        $list = SortedLinkedList::int(1, 2, 2, 3, 4);
+        $this->assertTrue($list->has(2));
+        $this->assertTrue($list->has(1));
+        $this->assertTrue($list->has(4));
+        $this->assertFalse($list->has(99));
+        $this->assertFalse($list->has(-100));
+    }
+
+    public function testHasElementString(): void {
+        $list = SortedLinkedList::string('apple', 'banana', 'banana', 'cherry');
+        $this->assertTrue($list->has('banana'));
+        $this->assertTrue($list->has('apple'));
+        $this->assertTrue($list->has('cherry'));
+        $this->assertFalse($list->has('pear'));
+        $this->assertFalse($list->has(''));
+    }
+
+    public function testCountElementsInt(): void {
+        $list = SortedLinkedList::int(1, 2, 2, 2, 3, 4);
+        $this->assertSame(3, $list->countElements(2));
+        $this->assertSame(1, $list->countElements(1));
+        $this->assertSame(1, $list->countElements(3));
+        $this->assertSame(0, $list->countElements(99));
+    }
+
+    public function testCountElementsString(): void {
+        $list = SortedLinkedList::string('apple', 'banana', 'banana', 'cherry', 'banana');
+        $this->assertSame(3, $list->countElements('banana'));
+        $this->assertSame(1, $list->countElements('apple'));
+        $this->assertSame(1, $list->countElements('cherry'));
+        $this->assertSame(0, $list->countElements('pear'));
+    }
+
+    public function testHasAndCountElementsEmptyList(): void {
+        $list = SortedLinkedList::int();
+        $this->assertFalse($list->has(1));
+        $this->assertSame(0, $list->countElements(1));
+        $listStr = SortedLinkedList::string();
+        $this->assertFalse($listStr->has('a'));
+        $this->assertSame(0, $listStr->countElements('a'));
+    }
 }

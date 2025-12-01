@@ -22,12 +22,12 @@
   },
   "autoload": {
     "psr-4": {
-      "MaxaOndrej\\ShipMonk\\LinkedList\\": "src/"
+      "MaxaOndrej\\ShipMonk\\Collections\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "MaxaOndrej\\ShipMonk\\LinkedList\\": "tests/"
+      "MaxaOndrej\\ShipMonk\\Collections\\": "tests/"
     }
   },
   "require": {

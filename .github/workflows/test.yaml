@@ -9,10 +9,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Setup PHP with PECL extension
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
       - name: Install Composer Dependencies
         uses: php-actions/composer@v6
-        with:
-          php_version: 8.4.15
       - name: Run PHP-CS-Fixer
         run: composer run-script lint
   phpstan:
@@ -20,10 +22,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Setup PHP with PECL extension
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
       - name: Install Composer Dependencies
         uses: php-actions/composer@v6
-        with:
-          php_version: 8.4.15
       - name: Run PHPStan
         run: composer run-script phpstan
   test:
@@ -31,10 +35,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Setup PHP with PECL extension
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
       - name: Install Composer Dependencies
         uses: php-actions/composer@v6
-        with:
-          php_version: 8.4.15
       - name: Run PHPUnit Tests
         uses: php-actions/phpunit@v4
         with:
